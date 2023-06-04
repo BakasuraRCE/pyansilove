@@ -1,0 +1,18 @@
+name: Publish Python 🐍 distributions 📦 to PyPI
+
+on: push
+
+jobs:
+    pypi-publish:
+        name: Upload release to PyPI
+        runs-on: ubuntu-latest
+        environment:
+            name: pypi
+            url: https://pypi.org/p/pyansilove
+        permissions:
+            id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
+        steps:
+            # retrieve your distributions here
+
+            -   name: Publish package distributions to PyPI
+                uses: pypa/gh-action-pypi-publish@release/v1
