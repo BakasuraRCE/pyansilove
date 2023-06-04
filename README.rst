@@ -2,36 +2,81 @@
 Python Ansilove
 ===============
 
+pyansilove is a port of the libansilove_ library to convert ANSi and artscene related file formats into PNG images.
 
-.. image:: https://img.shields.io/pypi/v/pyansilove.svg
-        :target: https://pypi.python.org/pypi/pyansilove
-
-.. image:: https://img.shields.io/travis/BakasuraRCE/pyansilove.svg
-        :target: https://travis-ci.com/BakasuraRCE/pyansilove
-
-.. image:: https://readthedocs.org/projects/pyansilove/badge/?version=latest
-        :target: https://pyansilove.readthedocs.io/en/latest/?version=latest
-        :alt: Documentation Status
-
-
-
-
- ANSI and ASCII art to PNG converter in Python
-
-
-* Free software: BSD license
-* Documentation: https://pyansilove.readthedocs.io.
+* Free software: BSD-2-Clause license
 
 
 Features
 --------
 
-* TODO
+The following formats are supported:
+
+- .ANS - ANSi (ANSI escape sequences: ANSI X3.64 standard)
+
+TODO
+----
+
+Port support of formats:
+
+- .PCB - PCBoard Bulletin Board System (BBS) own file format
+- .BIN - Binary format (raw memory copy of text mode video memory)
+- .ADF - Artworx format, supporting custom character sets and palettes
+- .IDF - iCE Draw format, supporting custom character sets and palettes
+- .TND - TundraDraw format, supporting 24-bit color mode
+- .XB - The eXtended Binary XBin format, supporting custom character sets and palettes
+
+Documentation
+-------------
+
+Usage
+-----
+
+.. code:: python
+
+    from pathlib import Path
+
+    from pyansilove.ansilove import AnsiLove
+    from pyansilove.schemas import AnsiLoveOptions, AnsiLoveRenderingMode
+
+    # https://16colo.rs/pack/break_05/h7-lark.nfo
+    AnsiLove.ansi(
+        Path('nfo.nfo'),
+        Path('nfo.png'),
+        options=AnsiLoveOptions(
+            # truecolor=True,
+            # diz=True,
+            # dos=True,
+            # mode=AnsiLoveRenderingMode.TRANSPARENT
+        )
+    )
+
+    # https://16colo.rs/pack/fire-36/US-TREMR.ANS
+    AnsiLove.ansi(
+        Path('US-TREMR.ANS'),
+        Path('US-TREMR.png'),
+        options=AnsiLoveOptions(
+            # diz=True,
+            # dos=True,
+            bits=9,
+            scale_factor=2,
+            # mode=AnsiLoveRenderingMode.TRANSPARENT,
+        )
+    )
+
+
+
+License
+-------
+
+pyansilove is released under the BSD 2-Clause license. See the file LICENSE for details.
 
 Credits
 -------
 
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+Original code written by libansilove_
 
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+Port to python by Bakasura_
+
+.. _libansilove: https://github.com/ansilove/libansilove
+.. _Bakasura: https://github.com/BakasuraRCE
