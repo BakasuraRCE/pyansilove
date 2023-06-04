@@ -36,13 +36,12 @@ Usage
 
     from pathlib import Path
 
-    from pyansilove.ansilove import AnsiLove
+    from pyansilove.pyansilove import AnsiLove
     from pyansilove.schemas import AnsiLoveOptions, AnsiLoveRenderingMode
 
-    # https://16colo.rs/pack/break_05/h7-lark.nfo
     AnsiLove.ansi(
-        Path('nfo.nfo'),
-        Path('nfo.png'),
+        Path('h7-lark.nfo'),
+        Path('h7-lark.png'),
         options=AnsiLoveOptions(
             # truecolor=True,
             # diz=True,
@@ -51,7 +50,6 @@ Usage
         )
     )
 
-    # https://16colo.rs/pack/fire-36/US-TREMR.ANS
     AnsiLove.ansi(
         Path('US-TREMR.ANS'),
         Path('US-TREMR.png'),
@@ -63,6 +61,7 @@ Usage
             # mode=AnsiLoveRenderingMode.TRANSPARENT,
         )
     )
+
 
 
 
